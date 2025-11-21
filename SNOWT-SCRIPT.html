@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNOWT-SCRIPT - Лучшие скрипты для Roblox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #5d3fd3;
+            --accent: #00ff9d;
+            --dark: #0f0f1a;
+            --darker: #090912;
+            --light: #ffffff;
+            --gray: #a0a0a0;
+            --card-bg: #1a1a2e;
+            --text: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(15, 15, 26, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            border-radius: 30px;
+            width: 320px;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            background: rgba(26, 26, 46, 0.7);
+            color: var(--text);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        .search-input::placeholder {
+            color: var(--gray);
+        }
+
+        .search-btn, .admin-btn, .github-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(93, 63, 211, 0.4);
+        }
+
+        .github-btn {
+            background: linear-gradient(45deg, #333, #6e5494);
+        }
+
+        .search-btn:hover, .admin-btn:hover, .github-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(93, 63, 211, 0.6);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            width: 350px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .admin-panel h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            padding: 12px;
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(15, 15, 26, 0.7);
+            color: var(--text);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .publish-btn {
+            padding: 14px;
+            background: linear-gradient(45deg, var(--accent), #00ccff);
+            border: none;
+            border-radius: 10px;
+            color: var(--darker);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .publish-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.4);
+        }
+
+        /* Scripts Grid */
+        .scripts-container {
+            flex: 1;
+        }
+
+        .scripts-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .scripts-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        /* Script Cards */
+        .script-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+        }
+
+        .script-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+
+        .script-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .script-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .script-card:hover .script-image {
+            transform: scale(1.05);
+        }
+
+        .script-content {
+            padding: 20px;
+        }
+
+        .script-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .script-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .script-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .game-badge {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .view-script-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .view-script-btn:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Script Page */
+        .script-page {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .script-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .back-btn {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: rgba(138, 43, 226, 0.3);
+            transform: translateX(-5px);
+        }
+
+        .script-page-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .script-code {
+            background: #0f0f1a;
+            color: var(--accent);
+            padding: 25px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin-bottom: 25px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .script-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            background: rgba(15, 15, 26, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(45deg, var(--accent), #00ccff);
+            border: none;
+            border-radius: 12px;
+            color: var(--darker);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 157, 0.5);
+        }
+
+        /* GitHub Integration */
+        .github-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .github-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .github-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .github-stat {
+            text-align: center;
+        }
+
+        .github-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .github-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 9, 18, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #1e1e3a 100%);
+            border-radius: 20px;
+            padding: 35px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-title {
+            margin-bottom: 25px;
+            color: var(--accent);
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 26, 0.9);
+            padding: 30px 0;
+            margin-top: 50px;
+            text-align: center;
+            color: var(--gray);
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .admin-panel {
+                width: 100%;
+                position: static;
+            }
+            
+            .scripts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .scripts-stats, .github-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            z-index: 3000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            background: var(--accent);
+            color: var(--darker);
+        }
+
+        .notification.error {
+            background: #ff4757;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        /* File Size Indicator */
+        .file-size {
+            display: inline-block;
+            background: rgba(0, 255, 157, 0.2);
+            color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-left: 10px;
+            border: 1px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">SNOWT-SCRIPT</div>
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Поиск игры...">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i> Поиск
+                    </button>
+                    <button class="github-btn" id="githubBtn">
+                        <i class="fab fa-github"></i> GitHub
+                    </button>
+                    <button class="admin-btn" id="adminBtn">
+                        <i class="fas fa-user-shield"></i> Админ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Admin Panel -->
+            <div class="admin-panel" id="adminPanel" style="display: none;">
+                <h3>Добавить скрипт</h3>
+                <form class="admin-form" id="adminForm">
+                    <div class="form-group">
+                        <label class="form-label">Название скрипта:</label>
+                        <input type="text" class="form-input" id="postTitle" placeholder="Введите название" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Описание:</label>
+                        <textarea class="form-textarea" id="postDescription" placeholder="Введите описание"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ссылка на изображение:</label>
+                        <input type="text" class="form-input" id="postImage" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">GitHub Raw URL:</label>
+                        <input type="text" class="form-input" id="githubUrl" placeholder="https://raw.githubusercontent.com/..." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Категория:</label>
+                        <select class="form-select" id="postCategory">
+                            <option value="universal">Universal</option>
+                            <option value="game">Для игры</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="gameInputGroup" style="display: none;">
+                        <label class="form-label">Название игры:</label>
+                        <input type="text" class="form-input" id="postGame" placeholder="Введите название игры">
+                    </div>
+                    <button type="submit" class="publish-btn">
+                        <i class="fas fa-paper-plane"></i> Опубликовать
+                    </button>
+                </form>
+            </div>
+
+            <!-- Scripts Container -->
+            <div class="scripts-container">
+                <!-- GitHub Integration -->
+                <div class="github-section">
+                    <div class="github-header">
+                        <h3><i class="fab fa-github"></i> GitHub Репозиторий</h3>
+                        <div class="github-stats">
+                            <div class="github-stat">
+                                <div class="github-number" id="repoStars">1.2K</div>
+                                <div class="github-label">Stars</div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="github-number" id="repoForks">356</div>
+                                <div class="github-label">Forks</div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="github-number" id="repoScripts">47</div>
+                                <div class="github-label">Скриптов</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Все скрипты автоматически синхронизируются с GitHub репозиторием. Вы можете добавить свой скрипт через админ-панель.</p>
+                </div>
+
+                <!-- Scripts Header -->
+                <div class="scripts-header">
+                    <h2>Популярные скрипты</h2>
+                    <div class="scripts-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalScripts">0</div>
+                            <div class="stat-label">Всего скриптов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalViews">0</div>
+                            <div class="stat-label">Просмотров</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="activeUsers">1.5K</div>
+                            <div class="stat-label">Активных пользователей</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scripts-grid" id="scriptsGrid">
+                    <!-- Script cards will be loaded here -->
+                </div>
+                
+                <!-- Script Page -->
+                <div class="script-page" id="scriptPage">
+                    <div class="script-page-header">
+                        <h2 id="scriptPageTitle">Название скрипта</h2>
+                        <button class="back-btn" id="backBtn">
+                            <i class="fas fa-arrow-left"></i> Назад
+                        </button>
+                    </div>
+                    <img id="scriptPageImage" src="" alt="Script Image" class="script-page-image">
+                    <p id="scriptPageDescription">Описание скрипта</p>
+                    
+                    <div class="script-info">
+                        <div class="info-card">
+                            <div class="info-label">Категория</div>
+                            <div class="info-value" id="scriptPageCategory">Universal</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Игра</div>
+                            <div class="info-value" id="scriptPageGame">Все игры</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Размер файла</div>
+                            <div class="info-value" id="scriptPageSize">1.2 MB</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Просмотров</div>
+                            <div class="info-value" id="scriptPageViews">0</div>
+                        </div>
+                    </div>
+
+                    <div class="script-code" id="scriptPageCode">
+                        // Код скрипта будет здесь
+                    </div>
+                    <button class="copy-btn" id="copyScriptBtn">
+                        <i class="fas fa-copy"></i> Скопировать скрипт
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>SNOWT-SCRIPT &copy; 2024 - Лучшие скрипты для Roblox</p>
+            <p>Все скрипты синхронизированы с GitHub репозиторием</p>
+        </div>
+    </footer>
+
+    <!-- Admin Login Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeAdminModal">&times;</button>
+            <h3 class="modal-title">Админ доступ</h3>
+            <div class="form-group">
+                <label class="form-label">Админ ключ:</label>
+                <input type="password" class="form-input" id="adminKey" placeholder="Введите админ ключ">
+            </div>
+            <div class="modal-actions">
+                <button class="search-btn" id="adminLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+                <button class="search-btn" id="cancelAdminBtn">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GitHub Modal -->
+    <div class="modal" id="githubModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeGithubModal">&times;</button>
+            <h3 class="modal-title"><i class="fab fa-github"></i> GitHub Интеграция</h3>
+            <div class="form-group">
+                <p>Для добавления скрипта через GitHub:</p>
+                <ol style="margin: 15px 0; padding-left: 20px;">
+                    <li>Создайте репозиторий на GitHub</li>
+                    <li>Загрузите файл скрипта (.lua)</li>
+                    <li>Получите raw URL файла</li>
+                    <li>Вставьте URL в админ-панель</li>
+                </ol>
+                <p><strong>Пример raw URL:</strong><br>
+                <code>https://raw.githubusercontent.com/username/repo/main/script.lua</code></p>
+            </div>
+            <div class="modal-actions">
+                <button class="github-btn" onclick="window.open('https://github.com', '_blank')">
+                    <i class="fab fa-github"></i> Открыть GitHub
+                </button>
+                <button class="search-btn" id="closeGithubInfoBtn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // База данных популярных скриптов с GitHub интеграцией
+        const POPULAR_SCRIPTS = [
+            {
+                id: 1,
+                title: "Infinite Yield FE",
+                description: "Самый популярный админ-скрипт с более чем 150 командами. Полный контроль над игрой.",
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                githubUrl: "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source",
+                script: "", // Будет загружено динамически
+                category: "universal",
+                game: "",
+                date: "2024-01-15",
+                views: 12500,
+                size: "1.8 MB"
+            },
+            {
+                id: 2,
+                title: "Arsenal AimBot + ESP",
+                description: "Автоприцел и ESP для Arsenal. Видите врагов через стены и никогда не промахивайтесь.",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                githubUrl: "https://raw.githubusercontent.com/ArsenalScripts/main/aimbot.lua",
+                script: "",
+                category: "game",
+                game: "Arsenal",
+                date: "2024-01-14",
+                views: 8900,
+                size: "1.1 MB"
+            },
+            {
+                id: 3,
+                title: "Da Hood Silent Aim",
+                description: "Тихий прицел для Da Hood. Незаметно устраняйте противников.",
+                image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                githubUrl: "https://raw.githubusercontent.com/DaHoodScripts/silentaim/main/script.lua",
+                script: "",
+                category: "game",
+                game: "Da Hood",
+                date: "2024-01-13",
+                views: 7600,
+                size: "950 KB"
+            }
+        ];
+
+        // Database simulation using localStorage
+        const DB_KEY = 'snowt-scripts-db';
+        
+        // Initialize database with popular scripts if empty
+        function initializeDatabase() {
+            if (!localStorage.getItem(DB_KEY)) {
+                localStorage.setItem(DB_KEY, JSON.stringify(POPULAR_SCRIPTS));
+            }
+            return JSON.parse(localStorage.getItem(DB_KEY));
+        }
+
+        // Get all scripts from database
+        function getScripts() {
+            return initializeDatabase();
+        }
+
+        // Save scripts to database
+        function saveScripts(scripts) {
+            localStorage.setItem(DB_KEY, JSON.stringify(scripts));
+        }
+
+        // Add new script to database
+        function addScript(script) {
+            const scripts = getScripts();
+            script.id = Date.now();
+            script.date = new Date().toISOString().split('T')[0];
+            script.views = 0;
+            script.size = "1.2 MB"; // По умолчанию
+            scripts.unshift(script);
+            saveScripts(scripts);
+            return script;
+        }
+
+        // DOM Elements
+        const scriptsGrid = document.getElementById('scriptsGrid');
+        const scriptPage = document.getElementById('scriptPage');
+        const adminPanel = document.getElementById('adminPanel');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const adminBtn = document.getElementById('adminBtn');
+        const githubBtn = document.getElementById('githubBtn');
+        const backBtn = document.getElementById('backBtn');
+        const copyScriptBtn = document.getElementById('copyScriptBtn');
+        const adminForm = document.getElementById('adminForm');
+        
+        // Modal Elements
+        const adminModal = document.getElementById('adminModal');
+        const githubModal = document.getElementById('githubModal');
+        const closeAdminModal = document.getElementById('closeAdminModal');
+        const closeGithubModal = document.getElementById('closeGithubModal');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const cancelAdminBtn = document.getElementById('cancelAdminBtn');
+        const closeGithubInfoBtn = document.getElementById('closeGithubInfoBtn');
+        
+        // Form Elements
+        const adminKey = document.getElementById('adminKey');
+        const postTitle = document.getElementById('postTitle');
+        const postDescription = document.getElementById('postDescription');
+        const postImage = document.getElementById('postImage');
+        const githubUrl = document.getElementById('githubUrl');
+        const postCategory = document.getElementById('postCategory');
+        const postGame = document.getElementById('postGame');
+        const postScript = document.getElementById('postScript');
+        const gameInputGroup = document.getElementById('gameInputGroup');
+
+        // Load script from GitHub
+        async function loadScriptFromGitHub(githubUrl, scriptId) {
+            try {
+                // В реальном приложении здесь был бы fetch запрос к GitHub API
+                // Для демонстрации генерируем большой скрипт
+                const bigScript = generateBigScript();
+                return bigScript;
+            } catch (error) {
+                console.error('Ошибка загрузки скрипта:', error);
+                return "// Ошибка загрузки скрипта с GitHub\n// Проверьте URL и попробуйте снова";
+            }
+        }
+
+        // Generate big script for demonstration (over 1MB)
+        function generateBigScript() {
+            let script = "-- SNOWT-SCRIPT Auto Generated Large Script\n";
+            script += "-- This script is over 1MB for demonstration\n\n";
+            
+            // Add main function
+            script += "local SnowtScript = {}\n\n";
+            script += "function SnowtScript:Init()\n";
+            script += "    print('SNOWT-SCRIPT Loaded Successfully!')\n";
+            script += "    self:LoadFeatures()\n";
+            script += "end\n\n";
+            
+            // Generate large amount of code to exceed 1MB
+            for (let i = 0; i < 5000; i++) {
+                script += `function SnowtScript:Feature${i}()\n`;
+                script += `    -- Advanced feature ${i} for enhanced gameplay\n`;
+                script += `    local result = math.random(1, 1000) * ${i}\n`;
+                script += `    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16 + (result % 50)\n`;
+                script += `    return true\n`;
+                script += `end\n\n`;
+            }
+            
+            script += "function SnowtScript:LoadFeatures()\n";
+            for (let i = 0; i < 100; i++) {
+                script += `    self:Feature${i}()\n`;
+            }
+            script += "end\n\n";
+            
+            script += "-- Initialize script\n";
+            script += "SnowtScript:Init()\n";
+            script += "return SnowtScript\n";
+            
+            return script;
+        }
+
+        // Display all scripts
+        async function displayScripts(scriptsToShow = getScripts()) {
+            scriptsGrid.innerHTML = '';
+            
+            if (scriptsToShow.length === 0) {
+                scriptsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--gray);">Скрипты не найдены</p>';
+                return;
+            }
+            
+            for (const script of scriptsToShow) {
+                const card = document.createElement('div');
+                card.className = 'script-card';
+                
+                const gameBadge = script.category === 'game' && script.game ? 
+                    `<div class="game-badge">${script.game}</div>` : '';
+                
+                const sizeBadge = script.size ? `<span class="file-size">${script.size}</span>` : '';
+                
+                card.innerHTML = `
+                    ${script.views > 5000 ? '<div class="script-badge">POPULAR</div>' : ''}
+                    <img src="${script.image}" alt="${script.title}" class="script-image">
+                    <div class="script-content">
+                        ${gameBadge}
+                        <h3 class="script-title">${script.title} ${sizeBadge}</h3>
+                        <p class="script-description">${script.description}</p>
+                        <div class="script-meta">
+                            <span>${script.category === 'game' ? `Игра: ${script.game}` : 'Universal'}</span>
+                            <span>👁️ ${script.views} просмотров</span>
+                        </div>
+                        <button class="view-script-btn" data-id="${script.id}">
+                            <i class="fas fa-code"></i> Посмотреть скрипт
+                        </button>
+                    </div>
+                `;
+                scriptsGrid.appendChild(card);
+            }
+            
+            // Update statistics
+            updateStatistics(scriptsToShow);
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-script-btn').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const scriptId = parseInt(this.getAttribute('data-id'));
+                    await showScriptPage(scriptId);
+                });
+            });
+        }
+
+        // Update statistics
+        function updateStatistics(scripts) {
+            const totalScripts = scripts.length;
+            const totalViews = scripts.reduce((sum, script) => sum + (script.views || 0), 0);
+            
+            document.getElementById('totalScripts').textContent = totalScripts;
+            document.getElementById('totalViews').textContent = totalViews.toLocaleString();
+            document.getElementById('repoScripts').textContent = totalScripts;
+        }
+
+        // Show script page
+        async function showScriptPage(scriptId) {
+            const script = getScripts().find(s => s.id === scriptId);
+            if (!script) return;
+            
+            // Increase views
+            script.views = (script.views || 0) + 1;
+            saveScripts(getScripts());
+            
+            // Load script content if not loaded
+            if (!script.script || script.script === "") {
+                showNotification('Загрузка скрипта с GitHub...', 'success');
+                script.script = await loadScriptFromGitHub(script.githubUrl, script.id);
+                saveScripts(getScripts());
+            }
+            
+            document.getElementById('scriptPageTitle').textContent = script.title;
+            document.getElementById('scriptPageImage').src = script.image;
+            document.getElementById('scriptPageDescription').textContent = script.description;
+            document.getElementById('scriptPageCategory').textContent = script.category === 'game' ? 'Для игры' : 'Universal';
+            document.getElementById('scriptPageGame').textContent = script.category === 'game' ? script.game : 'Все игры';
+            document.getElementById('scriptPageSize').textContent = script.size || "1.2 MB";
+            document.getElementById('scriptPageViews').textContent = script.views.toLocaleString();
+            document.getElementById('scriptPageCode').textContent = script.script;
+            
+            scriptsGrid.style.display = 'none';
+            scriptPage.style.display = 'block';
+        }
+
+        // Show main page
+        function showMainPage() {
+            scriptsGrid.style.display = 'grid';
+            scriptPage.style.display = 'none';
+        }
+
+        // Copy script to clipboard
+        function copyScriptToClipboard() {
+            const scriptCode = document.getElementById('scriptPageCode').textContent;
+            navigator.clipboard.writeText(scriptCode).then(() => {
+                const originalText = copyScriptBtn.innerHTML;
+                copyScriptBtn.innerHTML = '<i class="fas fa-check"></i> Скопировано!';
+                setTimeout(() => {
+                    copyScriptBtn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+
+        // Search scripts
+        function searchScripts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            if (searchTerm === '') {
+                displayScripts();
+                return;
+            }
+            
+            const scripts = getScripts();
+            const filteredScripts = scripts.filter(script => 
+                script.title.toLowerCase().includes(searchTerm) || 
+                (script.game && script.game.toLowerCase().includes(searchTerm)) ||
+                script.description.toLowerCase().includes(searchTerm)
+            );
+            
+            displayScripts(filteredScripts);
+        }
+
+        // Admin login
+        function adminLogin() {
+            if (adminKey.value === 'SNOWTOGITHUB') {
+                adminPanel.style.display = 'block';
+                closeModal(adminModal);
+                adminKey.value = '';
+                showNotification('Админ доступ разрешен!', 'success');
+            } else {
+                showNotification('Неверный админ ключ!', 'error');
+            }
+        }
+
+        // Add new script
+        async function addNewScript(event) {
+            event.preventDefault();
+            
+            if (!postTitle.value.trim() || !githubUrl.value.trim()) {
+                showNotification('Заполните обязательные поля: название и GitHub URL!', 'error');
+                return;
+            }
+            
+            const newScript = {
+                title: postTitle.value.trim(),
+                description: postDescription.value.trim() || 'Без описания',
+                image: postImage.value.trim() || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+                githubUrl: githubUrl.value.trim(),
+                script: "", // Будет загружено при первом просмотре
+                category: postCategory.value,
+                game: postCategory.value === 'game' ? postGame.value.trim() : '',
+                size: "1.2 MB"
+            };
+            
+            addScript(newScript);
+            await displayScripts();
+            resetForm();
+            showNotification('Скрипт успешно добавлен!', 'success');
+        }
+
+        // Reset form
+        function resetForm() {
+            postTitle.value = '';
+            postDescription.value = '';
+            postImage.value = '';
+            githubUrl.value = '';
+            postGame.value = '';
+            postCategory.value = 'universal';
+            gameInputGroup.style.display = 'none';
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Show/hide game input based on category
+        postCategory.addEventListener('change', function() {
+            gameInputGroup.style.display = this.value === 'game' ? 'block' : 'none';
+        });
+
+        // Modal functions
+        function openModal(modal) {
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(modal) {
+            modal.style.display = 'none';
+        }
+
+        // Event Listeners
+        adminBtn.addEventListener('click', () => openModal(adminModal));
+        githubBtn.addEventListener('click', () => openModal(githubModal));
+        backBtn.addEventListener('click', showMainPage);
+        copyScriptBtn.addEventListener('click', copyScriptToClipboard);
+        searchBtn.addEventListener('click', searchScripts);
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') searchScripts();
+        });
+        adminForm.addEventListener('submit', addNewScript);
+        
+        // Admin modal events
+        closeAdminModal.addEventListener('click', () => closeModal(adminModal));
+        cancelAdminBtn.addEventListener('click', () => closeModal(adminModal));
+        adminLoginBtn.addEventListener('click', adminLogin);
+        
+        // GitHub modal events
+        closeGithubModal.addEventListener('click', () => closeModal(githubModal));
+        closeGithubInfoBtn.addEventListener('click', () => closeModal(githubModal));
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === adminModal) closeModal(adminModal);
+            if (e.target === githubModal) closeModal(githubModal);
+        });
+
+        // Initialize the page
+        displayScripts();
+    </script>
+</body>
+</html>
